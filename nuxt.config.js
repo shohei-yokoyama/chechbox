@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'checkbox',
+    title: 'CheckBox',
     htmlAttrs: {
       lang: 'en',
     },
@@ -29,14 +29,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-webfontloader',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -44,4 +44,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  webfontloader: {
+    google: {
+      families: ['Fredoka+One', 'Dosis:500,800'],
+    },
+  },
 }
