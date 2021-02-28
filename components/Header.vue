@@ -27,7 +27,7 @@
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" fixed temporary class="black">
       <v-list nav dense>
-        <v-item-group>
+        <v-item-group v-if="user.uid" class="text-center">
           <v-list-item v-for="(menuItem, index) in menuItems" :key="index">
             <v-list-item-title
               ><NuxtLink :to="menuItem.url" class="nav-tab">{{
@@ -35,6 +35,14 @@
               }}</NuxtLink></v-list-item-title
             >
           </v-list-item>
+          <v-list-item class="justify-center"
+            ><v-btn @click="logout">ログアウト</v-btn></v-list-item
+          >
+        </v-item-group>
+        <v-item-group v-else>
+          <v-list-item class="justify-center"
+            ><v-btn @click="login">ログイン</v-btn></v-list-item
+          >
         </v-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -56,6 +64,10 @@ export default {
         {
           name: '作成',
           url: '/create',
+        },
+        {
+          name: '検索',
+          url: '/',
         },
       ],
     }

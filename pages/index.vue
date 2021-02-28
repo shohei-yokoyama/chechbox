@@ -11,7 +11,7 @@
       </div>
     </v-row>
     <div class="text-center mt-10 mb-10">
-      <h2>みんなのチェックシート</h2>
+      <h2>投稿されたチェックシート一覧</h2>
       <ul class="mt-10">
         <li>
           <v-card
@@ -57,7 +57,6 @@
                         >詳細を見る</NuxtLink
                       ></v-btn
                     >
-                    <v-btn>Excelダウンロード</v-btn>
                   </v-card-actions>
                 </div>
               </v-col>

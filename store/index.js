@@ -28,10 +28,12 @@ export const actions = {
   },
   login() {
     const provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
+    this.$router.push('/')
   },
   logout() {
     firebase.auth().signOut()
+    this.$router.push('/')
   },
   deleteUser({ commmit }) {
     // eslint-disable-next-line no-undef
