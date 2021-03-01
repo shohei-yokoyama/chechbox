@@ -25,12 +25,17 @@
             </tbody>
           </v-simple-table>
           <v-card-actions>
+            <v-btn v-if="!user.uid" disabled class="mx-auto"
+              >CSVダウンロード</v-btn
+            >
             <VueJsonToCsv
+              v-else
               :json-data="csvData"
               :csv-title="checkList.checkList.title"
               :labels="labels"
               class="mx-auto"
-              ><v-btn @click="download">CSVダウンロード</v-btn></VueJsonToCsv
+            >
+              <v-btn @click="download">CSVダウンロード</v-btn></VueJsonToCsv
             >
           </v-card-actions>
         </v-col>
@@ -56,9 +61,13 @@ export default {
         id: { title: 'チェック欄' },
         text: { title: 'チェック項目' },
       },
+      user: {},
     }
   },
   created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.user = user || {}
+    })
     const id = this.$route.params.id
     checkListRef
       .doc(id)

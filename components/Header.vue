@@ -58,16 +58,12 @@ export default {
       drawer: false,
       menuItems: [
         {
-          name: 'マイページ',
-          url: '/',
-        },
-        {
           name: '作成',
           url: '/create',
         },
         {
           name: '検索',
-          url: '/',
+          url: '/search',
         },
       ],
     }

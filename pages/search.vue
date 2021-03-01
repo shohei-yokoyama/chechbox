@@ -1,28 +1,25 @@
 <template>
   <div class="container-wrapper">
-    <v-row class="top-wrapper" justify="center" align="center">
-      <div>
-        <h3 class="mb-10">
-          チェックリストを自由に作成・共有できるサービスです
-        </h3>
-        <v-btn class="create"
-          ><NuxtLink to="create">チェックリストを作成する</NuxtLink></v-btn
-        >
-        <p class="mt-10 p-text">
-          ※チェックリストの作成・CSVダウンロードについてはアカウントでのログインが必要です。
-        </p>
-      </div>
-      <div>
-        <img src="@/assets/image/checkbox.svg" alt="" />
-      </div>
+    <p class="text-center mt-10">
+      <v-icon>mdi-magnify</v-icon>チェックリストを探す
+    </p>
+    <v-row>
+      <v-col class="mx-auto" cols="md-6 xs-8">
+        <v-text-field
+          v-model="keyword"
+          label="キーワードから絞り込む"
+          solo
+          clearable
+        ></v-text-field>
+      </v-col>
     </v-row>
     <div class="text-center mt-10 mb-10">
-      <h2>投稿されたチェックシート一覧</h2>
+      <h2>検索結果</h2>
       <ul class="mt-10">
-        <li height="400px">
+        <li>
           <v-card
-            v-for="(checkList, index) in checkLists"
-            :key="index"
+            v-for="checkList in search"
+            :key="checkList.checkList.title"
             width="80%"
             height="420px"
             class="mx-auto mb-10"
@@ -78,15 +75,21 @@
 import firebase from 'firebase'
 const db = firebase.firestore()
 const checkListRef = db.collection('checkLists')
-// const checkListText = document.getElementById('checklist-text')
-
 export default {
   data() {
     return {
+      keyword: '',
       checkLists: [],
     }
   },
-  created() {
+  computed: {
+    search() {
+      return this.checkLists.filter((checkList) => {
+        return checkList.checkList.title.includes(this.keyword)
+      })
+    },
+  },
+  mounted() {
     checkListRef.get().then((checkList) => {
       const array = []
       checkList.forEach((val) => {
@@ -102,27 +105,6 @@ export default {
 .container-wrapper {
   width: 100%;
   min-height: 100vh;
-}
-.top-wrapper {
-  display: flex;
-  justify-content: space-around;
-  background-color: #e8f5e9;
-}
-.create {
-  display: block;
-  margin: 0 auto;
-}
-.create a {
-  text-decoration: none;
-  color: #000;
-}
-.table {
-  width: 100%;
-  height: 100%;
-}
-.table > tbody {
-  width: 100%;
-  height: 100%;
 }
 li {
   width: 100%;
@@ -140,9 +122,5 @@ li {
 .link-btn {
   text-decoration: none;
   color: black;
-}
-.p-text {
-  display: block;
-  width: 400px;
 }
 </style>
