@@ -123,4 +123,9 @@ li {
   text-decoration: none;
   color: black;
 }
+@media screen and (max-width: 560px) {
+  li {
+    display: block;
+  }
+}
 </style>

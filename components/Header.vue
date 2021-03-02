@@ -13,9 +13,9 @@
         >
       </v-tabs>
       <v-spacer></v-spacer>
-      <div v-if="user.uid" class="d-flex">
+      <div v-if="user.uid" class="d-flex pc__display">
         <p class="display-name mb-0 mr-10 mt-2">
-          ユーザーネーム：{{ user.displayName }}
+          ユーザー：{{ user.displayName }}
         </p>
         <v-btn color="white" class="black--text" @click="logout"
           >ログアウト</v-btn
@@ -26,8 +26,13 @@
       >
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" fixed temporary class="black">
-      <v-list nav dense>
+      <v-list nav dense class="mt-15">
         <v-item-group v-if="user.uid" class="text-center">
+          <v-list-item>
+            <p class="display-name mb-0 mt-2">
+              ユーザー：{{ user.displayName }}
+            </p>
+          </v-list-item>
           <v-list-item v-for="(menuItem, index) in menuItems" :key="index">
             <v-list-item-title
               ><NuxtLink :to="menuItem.url" class="nav-tab">{{
@@ -58,6 +63,10 @@ export default {
       drawer: false,
       menuItems: [
         {
+          name: 'ホーム',
+          url: '/',
+        },
+        {
           name: '作成',
           url: '/create',
         },
@@ -84,7 +93,7 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .v-application .title {
   font-weight: 600;
   font-size: 28px !important;
@@ -103,9 +112,34 @@ export default {
 .display-name {
   font-weight: bold;
   width: 300px;
+  color: white;
 }
 .v-toolbar__title {
   overflow: visible !important;
   margin-right: 50px !important;
+}
+.v-app-bar__nav-icon {
+  @include display_pc {
+    display: none !important;
+  }
+}
+.v-tabs {
+  display: none;
+  @include display_pc {
+    display: block !important;
+  }
+}
+@media screen and (max-width: 560px) {
+  .d-xs-none {
+    display: none;
+  }
+  .display-name {
+    font-weight: bold;
+    width: 300px;
+    color: white;
+  }
+  .pc__display {
+    display: none !important;
+  }
 }
 </style>

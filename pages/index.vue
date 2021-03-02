@@ -1,10 +1,8 @@
 <template>
   <div class="container-wrapper">
     <v-row class="top-wrapper" justify="center" align="center">
-      <div>
-        <h3 class="mb-10">
-          チェックリストを自由に作成・共有できるサービスです
-        </h3>
+      <div class="text-center pt-10 sx">
+        <h3 class="mb-10">チェックリストを自由に作成・共有できるサービス</h3>
         <v-btn class="create"
           ><NuxtLink to="create">チェックリストを作成する</NuxtLink></v-btn
         >
@@ -144,5 +142,28 @@ li {
 .p-text {
   display: block;
   width: 400px;
+}
+@media screen and (max-width: 560px) {
+  .container-wrapper {
+    width: 100%;
+  }
+  li {
+    display: block;
+  }
+  img {
+    width: 300px;
+    height: 300px;
+  }
+  .top-wrapper {
+    margin: 0 auto;
+  }
+  .p-text {
+    width: 100%;
+  }
+  h3 {
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+  }
 }
 </style>

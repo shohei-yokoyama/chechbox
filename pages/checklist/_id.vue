@@ -5,7 +5,7 @@
         checkList.checkList.title
       }}</v-card-title>
       <v-row class="justify-center">
-        <v-col cols="10">
+        <v-col cols="12">
           <v-simple-table>
             <thead>
               <tr>
@@ -95,5 +95,10 @@ export default {
 }
 .done {
   text-decoration: line-through;
+}
+@media screen and (max-width: 560px) {
+  .v-card {
+    width: 90% !important;
+  }
 }
 </style>

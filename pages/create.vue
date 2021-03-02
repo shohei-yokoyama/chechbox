@@ -9,7 +9,7 @@
               v-model="checkLists.title"
               label="チェックリストのタイトルを入力して下さい。"
               cols="12"
-              md="4"
+              md="8"
               required
             ></v-text-field>
           </v-col>
@@ -19,14 +19,14 @@
                 v-model="checktext.text"
                 label="チェック項目を入力してください。"
                 cols="12"
-                md="4"
+                md="8"
                 required
               ></v-text-field>
             </v-col>
           </div>
         </v-card>
       </v-row>
-      <div class="add-form text-right">
+      <div class="add-form">
         <v-btn dark fab small color="black" @click.prevent="add"
           ><v-icon>mdi-plus</v-icon></v-btn
         >
@@ -121,7 +121,7 @@ export default {
       this.checkLists.checkList.push(checkList)
     },
     remove() {
-      this.checkLists.splice(this.checkLists.checkList.length - 1, 1)
+      this.checkLists.checkList.splice(this.checkLists.checkList.length - 1, 1)
     },
     allCheck() {
       this.checkLists.checkList.forEach(function (checktext) {
@@ -155,6 +155,7 @@ export default {
 .add-form {
   width: 50%;
   margin: 0 auto;
+  text-align: right;
 }
 .input-area {
   width: 40%;
@@ -173,5 +174,16 @@ export default {
 }
 .done {
   text-decoration: line-through;
+}
+@media screen and (max-width: 560px) {
+  .create-container {
+    width: 100%;
+  }
+  .input-area {
+    width: 90%;
+  }
+  .add-form {
+    text-align: center;
+  }
 }
 </style>
