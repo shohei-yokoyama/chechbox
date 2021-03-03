@@ -55,4 +55,5 @@ export default {
       families: ['Fredoka+One', 'Dosis:500,800'],
     },
   },
+  target: 'static',
 }
