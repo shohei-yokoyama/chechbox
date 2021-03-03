@@ -1,6 +1,6 @@
-import { auth } from '../plugins/firebase'
+import firebase from '../plugins/firebase'
 export default function ({ store, redirect }) {
-  auth.onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (!user) {
       redirect('/login')
     }
