@@ -24,6 +24,10 @@ export default {
       links: [
         {
           name: '利用規約',
+          url: '/termofservice',
+        },
+        {
+          name: 'プライバシーポリシー',
           url: '/policy',
         },
         {

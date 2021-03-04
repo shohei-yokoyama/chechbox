@@ -3,7 +3,7 @@
     <v-app-bar app dark color="green accent-4">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title class="title"
-        ><NuxtLink to="/">CheckBox</NuxtLink></v-toolbar-title
+        ><NuxtLink to="/">チェックシートメーカー</NuxtLink></v-toolbar-title
       >
       <v-tabs v-if="user.uid">
         <v-tab v-for="(menuItem, index) in menuItems" :key="index"
@@ -65,6 +65,10 @@ export default {
         {
           name: 'ホーム',
           url: '/',
+        },
+        {
+          name: 'マイページ',
+          url: 'mypage',
         },
         {
           name: '作成',

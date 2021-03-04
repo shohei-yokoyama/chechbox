@@ -88,7 +88,9 @@ export default {
     checkListRef.get().then((checkList) => {
       const array = []
       checkList.forEach((val) => {
-        array.push(val.data())
+        if (!val.data().checkList.privateMode) {
+          array.push(val.data())
+        }
         this.checkLists = array
       })
     })

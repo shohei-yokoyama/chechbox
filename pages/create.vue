@@ -40,6 +40,12 @@
           ><v-icon>mdi-minus</v-icon></v-btn
         >
       </div>
+      <div class="d-flex justify-center">
+        <v-checkbox
+          v-model="checkLists.private"
+          label="公開しない"
+        ></v-checkbox>
+      </div>
       <div class="d-flex justify-center mt-2">
         <div class="text-center mr-10">
           <v-btn @click="addCheckList">登録する</v-btn>
@@ -102,6 +108,7 @@ export default {
         user: {},
         title: '',
         checkList: [{ text: '', checkbox: false }],
+        private: false,
       },
       dialog: false,
       absolute: true,
@@ -137,9 +144,16 @@ export default {
       const title = this.checkLists.title
       const checkList = this.checkLists.checkList
       const user = this.checkLists.user.uid
-      this.$store.dispatch('addCheckList', { user, title, checkList })
+      const privateMode = this.checkLists.private
+      this.$store.dispatch('addCheckList', {
+        user,
+        title,
+        checkList,
+        privateMode,
+      })
       this.checkLists.title = ''
       this.checkLists.checkList = [{ text: '', checkbox: false }]
+      this.checkLists.private = false
       this.$router.push('/')
     },
   },
