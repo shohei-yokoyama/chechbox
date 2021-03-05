@@ -43,6 +43,7 @@ export default {
     'nuxt-sass-resources-loader',
     '@nuxtjs/axios',
     'nuxt-webfontloader',
+    'nuxt-clipboard2',
   ],
 
   styleResources: {

@@ -45,11 +45,24 @@
                       >詳細を見る</NuxtLink
                     ></v-btn
                   >
-                  <!-- <v-btn>URLを表示</v-btn> -->
+                  <v-btn
+                    @click="
+                      onCopy(checkList.id)
+                      dialog = true
+                    "
+                    >URLをコピー</v-btn
+                  >
                 </v-card-actions>
               </div>
             </v-col>
           </v-row>
+          <v-dialog v-model="dialog" width="300">
+            <v-card>
+              <v-card-title class="justify-center"
+                >コピーしました！</v-card-title
+              >
+            </v-card>
+          </v-dialog>
         </v-card>
       </li>
     </ul>
@@ -70,6 +83,7 @@ export default {
         id: { title: 'チェック欄' },
         text: { title: 'チェック項目' },
       },
+      dialog: false,
     }
   },
   created() {
@@ -87,6 +101,12 @@ export default {
         this.checkLists = array
       })
     })
+  },
+  methods: {
+    onCopy(id) {
+      const url = 'https://checkbox-app.netlify.app/checklist/' + id
+      this.$copyText(url)
+    },
   },
 }
 </script>
