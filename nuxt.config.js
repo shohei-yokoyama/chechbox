@@ -57,7 +57,7 @@ export default {
   build: {},
   webfontloader: {
     google: {
-      families: ['Fredoka+One', 'Dosis:500,800'],
+      families: ['Fredoka+One', 'Yusei+Magic'],
     },
   },
   target: 'static',

@@ -102,7 +102,7 @@ export default {
   font-weight: 600;
   font-size: 28px !important;
   letter-spacing: 1px !important;
-  font-family: 'Fredoka One', cursive !important;
+  font-family: 'Yusei Magic', sans-serif !important;
 }
 .v-application .title a {
   text-decoration: none;

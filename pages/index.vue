@@ -7,7 +7,7 @@
           ><NuxtLink to="create">チェックリストを作成する</NuxtLink></v-btn
         >
         <p class="mt-10 p-text">
-          ※チェックリストの作成・CSVダウンロードについてはアカウントでのログインが必要です。
+          ※チェックリストの作成・CSVダウンロードはGoogleアカウントでのログインが必要です。
         </p>
       </div>
       <div>
